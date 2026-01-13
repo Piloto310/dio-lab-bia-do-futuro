@@ -1,0 +1,14 @@
+[
+  {
+    "tipo": "Phishing SMS",
+    "gatilhos": ["bloqueio", "vencimento", "urgente", "clonada"],
+    "tática": "Criar senso de urgência para forçar o clique em link falso.",
+    "exemplo": "BRADESCO: Evite o bloqueio da sua conta. Atualize agora seu token no link:..."
+  },
+  {
+    "tipo": "Falsa Central",
+    "gatilhos": ["compra suspeita", "confirmar PIX", "digite sua senha"],
+    "tática": "Simular uma transação de alto valor para assustar o cliente.",
+    "exemplo": "Compra aprovada em LOJAS ABC no valor de R$ 2.500,00. Caso nao reconheca, ligue para 0800..."
+  }
+]
