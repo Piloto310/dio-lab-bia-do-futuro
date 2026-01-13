@@ -6,10 +6,10 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 
 | Arquivo | Formato | Utilização no Agente |
 |---------|---------|---------------------|
-| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores |
-| `perfil_investidor.json` | JSON | Personalizar recomendações |
-| `produtos_financeiros.json` | JSON | Sugerir produtos adequados ao perfil |
-| `transacoes.csv` | CSV | Analisar padrão de gastos do cliente |
+| `historico_atendimento.csv` | CSV | Identificar se o cliente já reportou problemas de segurança ou suspeitas de fraude anteriormente |
+| `perfil_investidor.json` | JSON | Validar se uma oferta recebida pelo cliente condiz com seu perfil (ex: golpistas oferecendo cripto para perfis conservadores) |
+| `produtos_financeiros.json` | JSON | Consultar nomes e características reais dos produtos do banco para detectar nomes falsos ou promessas irreais |
+| `transacoes.csv` | CSV | Verificar se houve movimentações atípicas ou tentativas de compras em sites suspeitos após o recebimento de uma mensagem |
 
 > [!TIP]
 > **Quer um dataset mais robusto?** Você pode utilizar datasets públicos do [Hugging Face](https://huggingface.co/datasets) relacionados a finanças, desde que sejam adequados ao contexto do desafio.
