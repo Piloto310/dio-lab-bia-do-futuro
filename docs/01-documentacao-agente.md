@@ -11,58 +11,25 @@ O projeto aborda a crescente vulnerabilidade de clientes bancários a golpes de 
 > A solução utiliza Inteligência Artificial Generativa para decompor mensagens suspeitas através de uma triagem técnica e comportamental. Em vez de uma simples lista de termos bloqueados, o agente realiza uma "autópsia" do texto baseada em quatro pilares
 
 1. Identificação de Gatilhos de Urgência e Medo (Engenharia Social)
-O agente varre o texto em busca de táticas de pressão psicológica, como:
-
-Ameaças de bloqueio: "Sua conta será encerrada em 30 minutos".
-
-Falsas multas: "Evite a multa de R$ 1.500,00 confirmando seus dados".
-
-Senso de oportunidade: "Você recebeu um PIX por engano, devolva agora".
 
 2. Perícia em Links e Domínios
-A IA analisa a anatomia das URLs fornecidas, detectando:
-
-Domínios de topo (TLDs) suspeitos: Identifica o uso de extensões como .xyz, .top, .online ou .link em vez do oficial .bradesco ou .com.br.
-
-Typosquatting: Detecta variações visuais enganosas, como braadesco.com ou bradesco-seguranca.com.
-
-Encurtadores: Alerta sobre o uso de bit.ly ou t.co em comunicações que deveriam ser oficiais.
 
 3. Análise Sintática e de Tom (NLP)
-Diferente de sistemas legados, o agente percebe:
-
-Inconsistências gramaticais: Erros de concordância ou caracteres especiais estranhos usados para burlar filtros de spam.
-
-Incompatibilidade de Persona: Quando o tom da mensagem não condiz com a comunicação institucional e formal do banco.
 
 4. Relatório Educativo (O "Porquê")
 Ao final da análise, o agente não apenas emite um veredito de "Risco", mas educa o usuário com uma explicação lógica:
 
-Exemplo de Resposta do Agente: "Atenção! Esta mensagem possui 95% de chance de ser um golpe. Motivo 1: O Bradesco não usa o domínio 'seguranca-atualiza.net'. Motivo 2: O banco nunca utiliza termos alarmistas como 'IMEDIATAMENTE' para procedimentos de rotina. Recomendação: Bloqueie o número e não clique no link."
-
 ### Público-Alvo
-> O projeto foca em clientes do sistema bancário (especialmente do Bradesco) que utilizam canais digitais, dividindo-os em três perfis principais de vulnerabilidade
+> O projeto foca em clientes do sistema bancário que utilizam canais digitais, dividindo-os em três perfis principais de vulnerabilidade
 
 1. Inclusos Digitais Recentes e Idosos (Público Prioritário)
 Este é o grupo mais visado por criminosos devido à menor familiaridade com as sutilezas das interfaces digitais.
 
-Descrição: Pessoas acima de 60 anos ou usuários que passaram a usar o Mobile Banking recentemente (ex: após a popularização do PIX).
-
-Dor: Possuem dificuldade em diferenciar notificações do sistema operacional de mensagens enviadas por golpistas. Têm receio de ter a conta bloqueada e agem sob pressão.
-
 2. Jovens Adultos e Usuários Hiperconectados
 Embora dominem a tecnologia, este público cai em golpes pela velocidade e volume de informações.
 
-Descrição: Estudantes e profissionais que realizam muitas transações diárias via PIX e compras em e-commerces.
-
-Dor: Costumam clicar em links de rastreio de encomendas falsas ou promoções imperdíveis em redes sociais sem verificar a origem da URL.
-
 3. Pequenos Empreendedores e MEIs
 O público PJ (Pessoa Jurídica) é alvo de golpes específicos de cobrança e atualização de dados cadastrais.
-
-Descrição: Donos de pequenos negócios que utilizam o WhatsApp como principal ferramenta de vendas e recebimento.
-
-Dor: Recebem falsas guias de impostos ou solicitações de "recadastramento de chave PIX" que parecem comunicações oficiais do banco ou do governo.
 
 ---
 
@@ -82,6 +49,7 @@ O STEVE.AI é o seu vigilante digital: rápido para alertar sobre perigos, mas s
 Uma comunicação clara, fácil de entender e que transmite a autoridade de quem entende de segurança sem ser arrogante.
 
 ### Exemplos de Linguagem
+
 Saudação (Foco em Segurança):
 
 "Olá! Eu sou o STEVE.AI, seu assistente de segurança digital. Recebeu alguma mensagem estranha ou está na dúvida sobre uma ligação? Cole o texto aqui ou me conte o que aconteceu para eu te ajudar."
