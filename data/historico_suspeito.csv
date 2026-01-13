@@ -1,0 +1,4 @@
+data_registro,tipo_ameaca,texto_mensagem,status
+2025-10-15,Link Falso,bradesco-seguro-atualiza.net,Confirmado Fraude
+2025-10-20,SMS Falso,Sua chave PIX expirou. Clique aqui.,Confirmado Fraude
+2025-10-25,WhatsApp,Ola sou seu gerente. Preciso confirmar seu token.,Confirmado Fraude
