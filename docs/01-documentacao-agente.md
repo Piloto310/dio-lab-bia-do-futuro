@@ -3,9 +3,9 @@
 ## Caso de Uso
 
 ### Problema
-> Qual problema financeiro seu agente resolve?
+> Deteccao de golpes e fraudes
 
-[Sua descrição aqui]
+[O projeto aborda a crescente vulnerabilidade de clientes bancários a golpes de engenharia social. Através de um assistente baseado em IA Generativa, transformamos a segurança passiva em ativa, permitindo que o usuário valide mensagens suspeitas e propostas duvidosas em segundos, utilizando o poder do processamento de linguagem natural para identificar gatilhos de fraude que passariam despercebidos pelo olho humano.]
 
 ### Solução
 > Como o agente resolve esse problema de forma proativa?
