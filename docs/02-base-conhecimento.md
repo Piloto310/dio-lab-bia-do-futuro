@@ -6,36 +6,24 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 
 | Arquivo | Formato | Utilização no Agente |
 |---------|---------|---------------------|
-| `historico_atendimento.csv` | CSV | Identificar se o cliente já reportou problemas de segurança ou suspeitas de fraude anteriormente |
-| `perfil_investidor.json` | JSON | Validar se uma oferta recebida pelo cliente condiz com seu perfil (ex: golpistas oferecendo cripto para perfis conservadores) |
-| `produtos_financeiros.json` | JSON | Consultar nomes e características reais dos produtos do banco para detectar nomes falsos ou promessas irreais |
-| `transacoes.csv` | CSV | Verificar se houve movimentações atípicas ou tentativas de compras em sites suspeitos após o recebimento de uma mensagem |
-
-> [!TIP]
-> **Quer um dataset mais robusto?** Você pode utilizar datasets públicos do [Hugging Face](https://huggingface.co/datasets) relacionados a finanças, desde que sejam adequados ao contexto do desafio.
+| `base_golpes_conhecidos.json` | JASON | Repositório com padrões de frases, erros comuns e táticas de engenharia social. |
+| `canais_oficiais_bradesco.csv` | CSV | Lista de domínios (.bradesco, .com.br), telefones e SMS oficiais para validação. |
+| `historico_suspeito.csv` | CSV | Exemplos de mensagens enviadas por usuários que foram confirmadas como fraude. |
 
 ---
 
 ## Adaptações nos Dados
 
-> Você modificou ou expandiu os dados mockados? Descreva aqui.
-
-[Sua descrição aqui]
-
+> Os dados foram expandidos com uma lista de "Palavras de Alerta" (como "urgente", "bloqueio", "imediatamente") e uma base de Typosquatting (variações visuais de links falsos). Também foram incluídos exemplos de golpes de "Falso Motoboy" e "Central de Segurança Falsa" para que o agente reconheça o modus operandi além do texto.
 ---
 
 ## Estratégia de Integração
 
 ### Como os dados são carregados?
-> Descreva como seu agente acessa a base de conhecimento.
-
-[ex: Os JSON/CSV são carregados no início da sessão e incluídos no contexto do prompt]
+> Os dados são carregados localmente através do framework LangChain. Utilizamos um TextLoader para os arquivos CSV/JSON, que são convertidos em documentos. Esses documentos são transformados em Embeddings e armazenados em um banco vetorial local (FAISS ou ChromaDB).
 
 ### Como os dados são usados no prompt?
-> Os dados vão no system prompt? São consultados dinamicamente?
-
-[Sua descrição aqui]
-
+> A consulta é feita via RAG (Retrieval-Augmented Generation). Quando o usuário cola uma mensagem, o sistema faz uma busca semântica na base de conhecimento. As informações mais relevantes (ex: "Como o Bradesco envia SMS?") são injetadas dinamicamente no contexto da LLM (Ollama/Llama 3) para que ela responda com base em fatos, não em suposições.
 ---
 
 ## Exemplo de Contexto Montado
@@ -43,13 +31,17 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 > Mostre um exemplo de como os dados são formatados para o agente.
 
 ```
-Dados do Cliente:
-- Nome: João Silva
-- Perfil: Moderado
-- Saldo disponível: R$ 5.000
+CONTEXTO DE SEGURANÇA (Base de Conhecimento):
+- Domínio Oficial: bradesco.com.br
+- SMS Oficial: Não envia links de cancelamento.
+- Tática Comum: Senso de urgência e ameaça de multa.
 
-Últimas transações:
-- 01/11: Supermercado - R$ 450
-- 03/11: Streaming - R$ 55
+ENTRADA DO USUÁRIO:
+"BRADESCO: Sua conta sera bloqueada em 30min por falta de atualizacao. Acesse: https://atualiza-bradesco.net"
+
+ANÁLISE DO STEVE.AI:
+1. Comparação de Link: "atualiza-bradesco.net" NÃO consta na lista de domínios oficiais.
+2. Análise de Gatilho: Termos "bloqueada" e "30min" identificados como gatilhos de urgência.
+3. Veredito: Risco de Phishing de 98%.
 ...
 ```
