@@ -22,6 +22,21 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 ### Como os dados são carregados?
 > Os dados são carregados localmente através do framework LangChain. Utilizamos um TextLoader para os arquivos CSV/JSON, que são convertidos em documentos. Esses documentos são transformados em Embeddings e armazenados em um banco vetorial local (FAISS ou ChromaDB).
 
+> from langchain_community.document_loaders import CSVLoader, JSONLoader
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import OllamaEmbeddings
+
+# 1. Importando os Canais Oficiais
+loader_canais = CSVLoader(file_path="./data/canais_oficiais_bradesco.csv")
+docs_canais = loader_canais.load()
+
+# 2. Criando o Banco de Dados Vetorial Local
+embeddings = OllamaEmbeddings(model="llama3")
+vector_db = FAISS.from_documents(docs_canais, embeddings)
+
+# 3. Preparando o Recuperador (Retriever)
+retriever = vector_db.as_retriever()
+
 ### Como os dados são usados no prompt?
 > A consulta é feita via RAG (Retrieval-Augmented Generation). Quando o usuário cola uma mensagem, o sistema faz uma busca semântica na base de conhecimento. As informações mais relevantes (ex: "Como o Bradesco envia SMS?") são injetadas dinamicamente no contexto da LLM (Ollama/Llama 3) para que ela responda com base em fatos, não em suposições.
 ---
